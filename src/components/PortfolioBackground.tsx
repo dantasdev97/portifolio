@@ -169,7 +169,7 @@ function ParticlesLayer({ color, density }: { color: string; density: number }) 
 					background: { color: { value: "#000000" } },
 					fpsLimit: 60,
 					particles: {
-						number: { value: density, density: { enable: true, area: 800 } },
+						number: { value: density, density: { enable: true } },
 						color: { value: color },
 						links: { enable: true, color, distance: 120, opacity: 0.25, width: 1 },
 						move: { enable: true, speed: 0.6, outModes: { default: "bounce" } },
