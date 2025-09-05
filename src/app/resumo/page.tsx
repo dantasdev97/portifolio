@@ -30,7 +30,9 @@ const Resumo = () => {
   return (
     <Card className="text-muted-foreground pb-4 w-auto max-w-4xl sm:h-[480px] overflow-y-auto bg-[#1D252B] border-none">
       <CardHeader className="flex flex-row items-center justify-between border-b bordeackr-bl text-white  ">
-        <CardTitle className="text-xl font-bold">Resumo</CardTitle>
+        <CardTitle className="text-xl font-bold">Resumodev
+          
+        </CardTitle>
       </CardHeader>
 
       <CardContent className="p-0 space-y-6 text-white">
