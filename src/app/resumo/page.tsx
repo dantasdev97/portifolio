@@ -30,8 +30,8 @@ const Resumo = () => {
   return (
     <Card className="text-muted-foreground pb-4 w-auto max-w-4xl sm:h-[480px] overflow-y-auto bg-[#1D252B] border-none">
       <CardHeader className="flex flex-row items-center justify-between border-b bordeackr-bl text-white  ">
-        <CardTitle className="text-xl font-bold">Resumodev
-          
+        <CardTitle className="text-xl font-bold">Resumo
+
         </CardTitle>
       </CardHeader>
 
@@ -43,7 +43,7 @@ const Resumo = () => {
               <MonitorCog size={24} />
               Experiência
             </h2>
-            <div className="space-y-4 text-white pl-6">
+            <div className="space-y-4 text-white ">
               <div>
                 <h3 className="text-lg font-semibold text-white">2022-2024</h3>
                 <p>
