@@ -13,7 +13,7 @@ import {
 
 // ✅ MUDANÇA 1: Tipo correto para Next.js 15
 interface PageProps {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export async function generateStaticParams() {
@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ProjetoPage({ params }: PageProps) {
-  const { id } = params  // ← direto, sem await
+  const { id } = await params  // ← agora com await
 
   const projetoId = parseInt(id)
   const projeto = projetos.find((p) => p.id === projetoId)
