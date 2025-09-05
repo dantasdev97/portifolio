@@ -109,7 +109,7 @@ export default function PortfolioPage() {
             {projetosFiltrados.length === 0 && (
               <div className="text-center py-12">
                 <p className="text-gray-300">
-                  Nenhum projeto encontrado para a categoria "{filtroAtivo}".
+                  Nenhum projeto encontrado para a categoria &quot;{filtroAtivo}&quot;.
                 </p>
               </div>
             )}

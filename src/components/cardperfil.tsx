@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Instagram, Linkedin, Github, Download, MessageCircle } from "lucide-react";
 
 const CardPerfil = () => {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    setOpen(true); // ativa animação ao montar
-  }, []);
+  // useEffect(() => {
+  //   setOpen(true); // ativa animação ao montar
+  // }, []);
 
   return (
     <Card className="w-full sm:max-w-md shadow-xl bg-[#1D252B] border-none h-[480px] transition-all duration-500 ease-out ">

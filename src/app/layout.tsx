@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const [activeHash, setActiveHash] = useState("")
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [desktopAnimation, setDesktopAnimation] = useState(false)
-  const [pageContent, setPageContent] = useState(children)
+  // const [pageContent, setPageContent] = useState(children)
   const mainRef = useRef<HTMLDivElement | null>(null)
   const pathname = usePathname()
   const router = useRouter()
@@ -274,7 +274,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* Conteúdo Mobile */}
             <div
               ref={mainRef}
-              className="flex-1 px-2 relative pt-[140px]"
+              className="flex-1 px-4
+              y center mr-1 relative pt-[140px]"
             >
               {pathname.startsWith("/portfolio/") ? (
                 // Mostra apenas o detalhe do projeto no mobile

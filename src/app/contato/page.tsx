@@ -73,7 +73,7 @@ const CardContato = () => {
       setIsSuccessOpen(true);
     } catch (error: unknown) {
       const message =
-        (typeof error === "object" && error && "message" in error && (error as any).message) ||
+        (typeof error === "object" && error && "message" in error && (error as { message: string }).message) ||
         (typeof error === "string" ? error : "Erro desconhecido ao enviar a mensagem.");
       console.error("Erro ao enviar via EmailJS:", error);
       alert(`Não foi possível enviar sua mensagem. Motivo: ${message}`);

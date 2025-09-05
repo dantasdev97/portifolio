@@ -2,9 +2,11 @@
 
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { NotebookPen, MonitorCog, ChartLine, BatteryLow } from "lucide-react";
+import { NotebookPen, MonitorCog, ChartLine } from "lucide-react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import TechCarousel from "@/components/TechCarousel";
+
 
 const textList = [
   "Desenvolvimento WordPress",
@@ -120,7 +122,17 @@ const Resumo = () => {
               ))}
             </ul>
           </section>
+          
+
+     
+
         </div>
+
+        <section className="border-b border-gray-300 pb-4 pl-6 flex">
+  <h2 className="text-xl font-bold">Tecnologias</h2>
+</section>
+
+<TechCarousel />
       </CardContent>
     </Card>
   );
