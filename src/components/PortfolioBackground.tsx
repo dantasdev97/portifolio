@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react"
 import Particles from "@tsparticles/react"
 import { loadSlim } from "@tsparticles/slim"
+import type { Engine } from "@tsparticles/engine"
 
 export type PortfolioBackgroundProps = {
 	variant?: "subtle-grid" | "radial-noise" | "particles"
@@ -156,7 +157,7 @@ function ParticlesLayer({ color, density }: { color: string; density: number }) 
 		<div aria-hidden="true" className="absolute inset-0 z-0">
 			<Particles
 				id="tsparticles"
-				init={async (engine) => {
+				init={async (engine: Engine) => {
 					try {
 						await loadSlim(engine)
 					} catch (e) {
