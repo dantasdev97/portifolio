@@ -19,7 +19,7 @@ export default function PortfolioPage() {
       <div className="w-full max-w-4xl mx-auto">
         <Card className="text-muted-foreground pb-4 w-full overflow-y-auto h-auto sm:h-[480px] sm:overflow-auto bg-[#1D252B] border-none">
           <CardHeader className="flex flex-row items-center justify-between border-b border-gray-600 text-white p-4 sm:p-6">
-            <CardTitle className="text-xl font-bold flex-shrink-0">
+            <CardTitle className="text-xl font-bold flex-shrink-0 g">
               <h1>Portfólio</h1>
             </CardTitle>
             
