@@ -177,7 +177,7 @@ function ParticlesLayer({ color, density }: { color: string; density: number }) 
 						size: { value: { min: 0.5, max: 2 } },
 					},
 					interactivity: {
-						events: { onHover: { enable: true, mode: "repulse" }, resize: true },
+						events: { onHover: { enable: true, mode: "repulse" }, resize: { enable: true } },
 						modes: { repulse: { distance: 120, duration: 0.3 } },
 					},
 					detectRetina: true,
