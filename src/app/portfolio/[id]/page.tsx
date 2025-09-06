@@ -43,7 +43,7 @@ export default async function ProjetoPage({ params }: PageProps) {
       </div>
 
       {/* Carrossel de Imagens */}
-      <div className="mb-4 relative w-full">
+      <div className="mb-4 relative w-full ">
         {imagens.length > 1 ? (
           <Carousel className="w-full max-w-full">
             <CarouselContent className="-ml-0">

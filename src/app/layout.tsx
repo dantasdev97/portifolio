@@ -12,6 +12,8 @@ import PortfolioPage from "./portfolio/page";
 import { usePathname, useRouter } from "next/navigation";
 import { Space_Grotesk, Poppins } from 'next/font/google';
 import { AuthProvider } from "@/contexts/AuthContext";
+import { ConditionalLayout } from "@/components/ConditionalLayout";
+import { ConditionalMain } from "@/components/ConditionalMain";
 
 // Configuração das fontes
 const spaceGrotesk = Space_Grotesk({ 
@@ -44,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
   const router = useRouter();
 
-  const hideSidebar = pathname === '/login' || pathname === '/signup';
+  const hideSidebar = pathname === '/login' || pathname === '/signup' || pathname.startsWith('/dashboard');
 
   useEffect(() => {
     setActiveHash(window.location.hash || "");
@@ -55,7 +57,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     setMenuAberto(false);
     setIsTransitioning(true);
 
-    if (pathname.startsWith("/portfolio/")) {
+    // Só redireciona para home se estiver em uma página de projeto específico
+    // e tentando navegar para uma seção da página inicial
+    if (pathname.startsWith("/portfolio/") && href.startsWith("#")) {
       router.push("/");
       setTimeout(() => {
         smoothScrollToSection(id);
@@ -134,7 +138,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex md:items-center md:justify-center h-auto md:h-screen w-screen bg-background text-foreground overflow-x-hidden font-poppins">
         <AuthProvider>
           <PortfolioBackground variant="radial-noise" accent="emerald" intensity={0.6} className="w-full h-full">
-            <div className="flex flex-row items-center justify-center max-w-7xl w-full mx-auto md:min-h-screen relative z-10">
+            <ConditionalLayout>
               
               {/* Desktop Layout */}
               {!hideSidebar && (
@@ -148,11 +152,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </>
               )}
 
-              <main className={`overflow-y-auto max-w-3xl w-full mx-auto transition-all duration-500 ease-out ${desktopAnimation ? 'page-exit' : 'page-enter'}`}>
-                <div className="page-content-wrapper">
-                  {children}
-                </div>
-              </main>
+              <ConditionalMain desktopAnimation={desktopAnimation}>
+                {children}
+              </ConditionalMain>
 
               {/* Mobile Layout */}
               <div className="flex flex-col md:hidden w-full min-h-screen">
@@ -244,28 +246,34 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       </nav>
                     </aside>
 
-                    {/* Conteúdo Mobile */}
-                    <div ref={mainRef} className="flex-1 px-4 y center mr-1 relative pt-[140px]">
-                      <section id="perfil" className="mb-3 scroll-mt-5 transition-all duration-700 ease-out pt-5">
-                        <CardPerfil />
-                      </section>
+                    {/* Conteúdo Mobile - Página inicial ou páginas separadas */}
+                    {pathname === '/' ? (
+                      <div ref={mainRef} className="flex-1 px-4 y center mr-1 relative pt-[140px]">
+                        <section id="perfil" className="mb-3 scroll-mt-5 transition-all duration-700 ease-out pt-5">
+                          <CardPerfil />
+                        </section>
 
-                      <section id="resumo" className="min-h-[calc(100vh-120px)] scroll-mt-20 transition-all duration-700 ease-out">
-                        <Resumo />
-                      </section>
+                        <section id="resumo" className="min-h-[calc(100vh-120px)] scroll-mt-20 transition-all duration-700 ease-out">
+                          <Resumo />
+                        </section>
 
-                      <section id="sobre" className="min-h-[calc(100vh-120px)] mt-3 scroll-mt-20 transition-all duration-700 ease-out">
-                        <Sobre />
-                      </section>
+                        <section id="sobre" className="min-h-[calc(100vh-120px)] mt-3 scroll-mt-20 transition-all duration-700 ease-out">
+                          <Sobre />
+                        </section>
 
-                      <section id="portfolio" className="min-h-[450px] mt-3 scroll-mt-20 transition-all duration-700 ease-out">
-                        <PortfolioPage />
-                      </section>
+                        <section id="portfolio" className="min-h-[450px] mt-3 scroll-mt-20 transition-all duration-700 ease-out">
+                          <PortfolioPage />
+                        </section>
 
-                      <section id="contato" className="min-h-[calc(100vh-120px)] mt-3 scroll-mt-20 transition-all duration-700 ease-out">
-                        <Contato />
-                      </section>
-                    </div>
+                        <section id="contato" className="min-h-[calc(100vh-120px)] mt-3 scroll-mt-20 transition-all duration-700 ease-out">
+                          <Contato />
+                        </section>
+                      </div>
+                    ) : (
+                      <div className="flex-1 w-full pt-[140px] mt-4 px-1">
+                        {children}
+                      </div>
+                    )}
                   </>
                 ) : (
                   <div className="flex-1 w-full">
@@ -273,7 +281,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </div>
                 )}
               </div>
-            </div>
+            </ConditionalLayout>
           </PortfolioBackground>
         </AuthProvider>
       </body>
