@@ -115,17 +115,10 @@ export function DashboardSidebar() {
           flex-shrink-0
         `}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full p-0">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-            {!isCollapsed && (
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">AD</span>
-                </div>
-                <span className="font-semibold text-gray-900 dark:text-white">Dashboard</span>
-              </div>
-            )}
+          <div className="flex items-center justify-between  border-gray-200 dark:border-gray-700">
+           
             <Button
               variant="ghost"
               size="icon"
